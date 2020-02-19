@@ -123,3 +123,30 @@ h6 {
   height: 100px;
   margin: 0 auto;
 }
+
+.btn {
+  cursor: pointer;
+}
+
+.conten-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  border: 0;
+  background: #f00;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.btn-secondary {
+  border: 0;
+  background: rgb(2, 156, 61);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+}
