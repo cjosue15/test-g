@@ -2,68 +2,58 @@ import React from 'react';
 import './styles/TestRow2.css';
 
 function getImage(id, opcion) {
-  return require(`../assets/img/Test2/Pruebas/${id}/P${id}_${opcion}.svg`);
+  return require(`../assets/img/Test2/Ejemplos/E${id}/E${id}_${opcion}.svg`);
 }
 
-function TestRow2(props) {
+function TestRowPrueba2(props) {
   return (
     <div className='TestRow2'>
       <div className='TestRow2__container'>
         {props.data.map(row => (
           <div className='TestRow2__row' key={row.id}>
             <span className='TestRow2__counter'>{row.id}</span>
-            <label htmlFor={`ask${row.id}-a`} className='TestRow2__object'>
+            <label className='TestRow2__object'>
               <input
-                id={`ask${row.id}-a`}
                 onChange={props.onChange}
                 type='radio'
-                name={`pregunta${row.id}`}
-                checked={props.state.test2[`pregunta${row.id}`] === 'a'}
+                name='test'
                 value='a'
               />
               <img src={getImage(row.id, row.option1)} alt='' />
             </label>
 
-            <label htmlFor={`ask${row.id}-b`} className='TestRow2__object'>
+            <label className='TestRow2__object'>
               <input
-                id={`ask${row.id}-b`}
                 onChange={props.onChange}
                 type='radio'
-                name={`pregunta${row.id}`}
-                checked={props.state.test2[`pregunta${row.id}`] === 'b'}
+                name='test'
                 value='b'
               />
               <img src={getImage(row.id, row.option2)} alt='' />
             </label>
-            <label htmlFor={`ask${row.id}-c`} className='TestRow2__object'>
+            <label className='TestRow2__object'>
               <input
-                id={`ask${row.id}-c`}
                 onChange={props.onChange}
                 type='radio'
-                name={`pregunta${row.id}`}
-                checked={props.state.test2[`pregunta${row.id}`] === 'c'}
+                name='test'
                 value='c'
               />
               <img src={getImage(row.id, row.option3)} alt='' />
             </label>
-            <label htmlFor={`ask${row.id}-d`} className='TestRow2__object'>
+            <label className='TestRow2__object'>
               <input
-                id={`ask${row.id}-d`}
                 onChange={props.onChange}
                 type='radio'
-                name={`pregunta${row.id}`}
-                checked={props.state.test2[`pregunta${row.id}`] === 'd'}
+                name='test'
                 value='d'
               />
               <img src={getImage(row.id, row.option4)} alt='' />
             </label>
-            <label htmlFor={`ask${row.id}-e`} className='TestRow2__object'>
+            <label className='TestRow2__object'>
               <input
-                id={`ask${row.id}-e`}
                 onChange={props.onChange}
                 type='radio'
-                name={`pregunta${row.id}`}
-                checked={props.state.test2[`pregunta${row.id}`] === 'e'}
+                name='test'
                 value='e'
               />
               <img src={getImage(row.id, row.option5)} alt='' />
@@ -75,4 +65,4 @@ function TestRow2(props) {
   );
 }
 
-export default TestRow2;
+export default TestRowPrueba2;

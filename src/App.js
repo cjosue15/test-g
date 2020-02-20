@@ -1,6 +1,7 @@
 import React from 'react';
 import TestRow from './components/TestRow';
 import TestRow2 from './components/TestRow2';
+import TestRowPrueba2 from './components/TestRowPrueba2';
 import TestRowPrueba from './components/TestRowPrueba';
 import Navbar from './components/Navbar';
 
@@ -388,55 +389,65 @@ function Step1(props) {
 }
 
 function Step2(props) {
-  // const data = [
-  //   {
-  //     id: 4,
-  //     ask1: 'images/x.png',
-  //     ask2: 'images/x.png',
-  //     ask3: 'images/x.png',
-  //     ask4: 'images/nada.jpg',
-  //     option1: 'images/x.png',
-  //     option2: 'images/x.png',
-  //     option3: 'images/x.png',
-  //     option4: 'images/x.png',
-  //     option5: 'images/x.png'
-  //   },
-  //   {
-  //     id: 5,
-  //     ask1: 'images/x.png',
-  //     ask2: 'images/x.png',
-  //     ask3: 'images/x.png',
-  //     ask4: 'images/nada.jpg',
-  //     option1: 'images/x.png',
-  //     option2: 'images/x.png',
-  //     option3: 'images/x.png',
-  //     option4: 'images/x.png',
-  //     option5: 'images/x.png'
-  //   },
-  //   {
-  //     id: 6,
-  //     ask1: 'images/x.png',
-  //     ask2: 'images/x.png',
-  //     ask3: 'images/x.png',
-  //     ask4: 'images/nada.jpg',
-  //     option1: 'images/x.png',
-  //     option2: 'images/x.png',
-  //     option3: 'images/x.png',
-  //     option4: 'images/x.png',
-  //     option5: 'images/x.png'
-  //   }
-  // ];
+  const prueba2 = [
+    {
+      id: 1,
+      option1: 1,
+      option2: 2,
+      option3: 3,
+      option4: 4,
+      option5: 5
+    },
+    {
+      id: 2,
+      option1: 1,
+      option2: 2,
+      option3: 3,
+      option4: 4,
+      option5: 5
+    }
+  ];
+
+  const data = [
+    {
+      id: 1,
+      option1: 1,
+      option2: 2,
+      option3: 3,
+      option4: 4,
+      option5: 5
+    },
+    {
+      id: 2,
+      option1: 1,
+      option2: 2,
+      option3: 3,
+      option4: 4,
+      option5: 5
+    },
+    {
+      id: 3,
+      option1: 1,
+      option2: 2,
+      option3: 3,
+      option4: 4,
+      option5: 5
+    }
+  ];
 
   if (props.currentStep !== 6 && props.currentStep !== 7) {
     return null;
   }
 
   if (props.currentStep === 6) {
-    return <TestRow2 onChange={props.handleChange} />;
+    // PRUEBA 2
+    return <TestRowPrueba2 onChange={props.handleChange} data={prueba2} />;
   }
 
   if (props.currentStep === 7) {
-    return <h1>Soy el 6</h1>;
+    return (
+      <TestRow2 onChange={props.handleChange} state={props.state} data={data} />
+    );
   }
   // return (
   //   <React.Fragment>
