@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/TestRow2.css';
 
 function getImage(id, opcion) {
   return require(`../../assets/img/Test2/Pruebas/${id}/P${id}_${opcion}.svg`);

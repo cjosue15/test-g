@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles/TestRow.css';
+// import './styles/TestRow.css';
 
 function getImage(id, opcion) {
   return require(`../../assets/img/Test1/Ejemplo/${id}/${id}_${opcion}.svg`);

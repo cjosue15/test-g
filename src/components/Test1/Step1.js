@@ -1,6 +1,7 @@
 import React from 'react';
 import TestRow from './TestRow';
 import TestRowPrueba from './TestRowPrueba';
+import './styles/TestRow.css';
 
 function Step1(props) {
   const data = [

@@ -1,6 +1,7 @@
 import React from 'react';
 import TestRow2 from './TestRow2';
 import TestRowPrueba2 from './TestRowPrueba2';
+import './styles/TestRow2.css';
 
 function Step2(props) {
   const prueba2 = [

@@ -10,7 +10,7 @@
   -webkit-filter: none;
   -moz-filter: none;
   filter: none;
-  background-color: #f00;
+  /* background-color: #f00; */
 }
 
 .Test_respuesta__opcion img {

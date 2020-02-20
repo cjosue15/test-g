@@ -10,6 +10,9 @@ import Step2 from './components/Test2/Step2';
 //TEST3
 import Step3 from './components/Test3/Step3';
 
+//TEST4
+import Step4 from './components/Test4/Step4';
+
 import './App.css';
 
 class App extends React.Component {
@@ -19,7 +22,8 @@ class App extends React.Component {
       currentStep: 1,
       test1: {},
       test2: {},
-      test3: {}
+      test3: {},
+      test4: {}
     };
   }
 
@@ -53,16 +57,28 @@ class App extends React.Component {
     });
   };
 
+  handleChange4 = event => {
+    const { name, value } = event.target;
+    this.setState({
+      test4: {
+        ...this.state.test4,
+        [name]: value
+      }
+    });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     const { test1 } = this.state;
     const { test2 } = this.state;
-    console.log({ test1, test2 });
+    const { test3 } = this.state;
+    const { test4 } = this.state;
+    console.log({ test1, test2, test3, test4 });
   };
 
   _next = () => {
     let currentStep = this.state.currentStep;
-    currentStep = currentStep >= 15 ? 16 : currentStep + 1;
+    currentStep = currentStep >= 19 ? 20 : currentStep + 1;
     this.setState({
       currentStep: currentStep
     });
@@ -97,14 +113,20 @@ class App extends React.Component {
 
   nextButton() {
     let currentStep = this.state.currentStep;
-    if (currentStep < 16) {
+    if (currentStep < 20) {
       return (
         <button className='btn btn-primary' type='button' onClick={this._next}>
           Next
         </button>
       );
     }
-    return <span></span>;
+    return null;
+  }
+
+  sendButton() {
+    const currentStep = this.state.currentStep;
+    if (currentStep === 20)
+      return <button className='btn btn-primary'>Send</button>;
   }
 
   render() {
@@ -130,9 +152,15 @@ class App extends React.Component {
               handleChange={this.handleChange3}
               state={this.state}
             />
+            <Step4
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange4}
+              state={this.state}
+            />
             <div className='conten-buttons'>
               {this.previousButton()}
               {this.nextButton()}
+              {this.sendButton()}
             </div>
           </form>
           {JSON.stringify(this.state)}
