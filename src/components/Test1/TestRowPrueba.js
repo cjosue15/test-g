@@ -9,9 +9,11 @@ function getImage(id, opcion) {
 function TestRowPrueba(props) {
   return (
     <div className='TestRow'>
+      <h1>Test 1</h1>
       {props.data.map(row => (
         <div className='Test__row' key={row.id}>
           <div className='Test_pregunta'>
+            <span className='Test__row-counter'>{row.id}</span>
             <div className='Test__object'>
               <div className='object_container'>
                 <img

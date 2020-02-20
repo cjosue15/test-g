@@ -8,6 +8,7 @@ function getImage(id, opcion) {
 function TestRowPrueba2(props) {
   return (
     <div className='TestRow2'>
+      <h1>Test 2</h1>
       <div className='TestRow2__container'>
         {props.data.map(row => (
           <div className='TestRow2__row' key={row.id}>

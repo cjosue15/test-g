@@ -23,48 +23,147 @@ class App extends React.Component {
       test1: {},
       test2: {},
       test3: {},
-      test4: {}
+      test4: {},
+      errorTest1: {
+        pregunta1: false,
+        pregunta2: false,
+        pregunta3: false,
+        pregunta4: false,
+        pregunta5: false,
+        pregunta6: false,
+        pregunta7: false,
+        pregunta8: false,
+        pregunta9: false,
+        pregunta10: false,
+        pregunta11: false,
+        pregunta12: false
+      },
+      errorTest2: {
+        pregunta1: false,
+        pregunta2: false,
+        pregunta3: false,
+        pregunta4: false,
+        pregunta5: false,
+        pregunta6: false,
+        pregunta7: false,
+        pregunta8: false,
+        pregunta9: false,
+        pregunta10: false,
+        pregunta11: false,
+        pregunta12: false,
+        pregunta13: false,
+        pregunta14: false
+      },
+      errorTest3: {
+        pregunta1: false,
+        pregunta2: false,
+        pregunta3: false,
+        pregunta4: false,
+        pregunta5: false,
+        pregunta6: false,
+        pregunta7: false,
+        pregunta8: false,
+        pregunta9: false,
+        pregunta10: false,
+        pregunta11: false,
+        pregunta12: false
+      },
+      errorTest4: {
+        pregunta1: false,
+        pregunta2: false,
+        pregunta3: false,
+        pregunta4: false,
+        pregunta5: false,
+        pregunta6: false,
+        pregunta7: false,
+        pregunta8: false
+      }
     };
   }
 
   handleChange1 = event => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     this.setState({
       test1: {
         ...this.state.test1,
         [name]: value
+      },
+      errorTest1: {
+        ...this.state.errorTest1,
+        [name]: checked
       }
     });
   };
 
   handleChange2 = event => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     this.setState({
       test2: {
         ...this.state.test2,
         [name]: value
+      },
+      errorTest2: {
+        ...this.state.errorTest2,
+        [name]: checked
       }
     });
   };
 
   handleChange3 = event => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     this.setState({
       test3: {
         ...this.state.test3,
         [name]: value
+      },
+      errorTest3: {
+        ...this.state.errorTest3,
+        [name]: checked
       }
     });
   };
 
   handleChange4 = event => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     this.setState({
       test4: {
         ...this.state.test4,
         [name]: value
+      },
+      errorTest4: {
+        ...this.state.errorTest4,
+        [name]: checked
       }
     });
+  };
+
+  validateForm = () => {
+    let isValid = false;
+    const radioStates1 = this.state.errorTest1;
+    const radioStates2 = this.state.errorTest2;
+    const radioStates3 = this.state.errorTest3;
+    const radioStates4 = this.state.errorTest4;
+
+    const radios = {
+      ...radioStates1,
+      ...radioStates2,
+      ...radioStates3,
+      ...radioStates4
+    };
+
+    const checkedStatus = Object.keys(radios).map(key => {
+      return radios[key];
+    });
+
+    const filteredArray = checkedStatus.filter(value => value === false);
+
+    // console.log(filteredArray);
+
+    if (filteredArray.length === 0) {
+      isValid = true;
+    }
+
+    return isValid;
   };
 
   handleSubmit = event => {
@@ -73,7 +172,10 @@ class App extends React.Component {
     const { test2 } = this.state;
     const { test3 } = this.state;
     const { test4 } = this.state;
-    console.log({ test1, test2, test3, test4 });
+
+    if (this.validateForm()) {
+      console.log({ test1, test2, test3, test4 });
+    }
   };
 
   _next = () => {
@@ -126,7 +228,11 @@ class App extends React.Component {
   sendButton() {
     const currentStep = this.state.currentStep;
     if (currentStep === 20)
-      return <button className='btn btn-primary'>Send</button>;
+      return (
+        <button className='btn btn-primary' onClick={this.validateForm}>
+          Send
+        </button>
+      );
   }
 
   render() {
@@ -163,7 +269,6 @@ class App extends React.Component {
               {this.sendButton()}
             </div>
           </form>
-          {JSON.stringify(this.state)}
         </div>
       </React.Fragment>
     );

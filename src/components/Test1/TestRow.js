@@ -10,6 +10,7 @@ function TestRow(props) {
       {props.data.map(row => (
         <div className='Test__row' key={row.id}>
           <div className='Test_pregunta'>
+            <span className='Test__row-counter'>{row.id}</span>
             <div className='Test__object'>
               <div className='object_container'>
                 <img
