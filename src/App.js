@@ -1,9 +1,14 @@
 import React from 'react';
-import TestRow from './components/TestRow';
-import TestRow2 from './components/TestRow2';
-import TestRowPrueba2 from './components/TestRowPrueba2';
-import TestRowPrueba from './components/TestRowPrueba';
 import Navbar from './components/Navbar';
+
+//TEST1
+import Step1 from './components/Test1/Step1';
+
+//TEST2
+import Step2 from './components/Test2/Step2';
+
+//TEST3
+import Step3 from './components/Test3/Step3';
 
 import './App.css';
 
@@ -13,7 +18,8 @@ class App extends React.Component {
     this.state = {
       currentStep: 1,
       test1: {},
-      test2: {}
+      test2: {},
+      test3: {}
     };
   }
 
@@ -37,6 +43,16 @@ class App extends React.Component {
     });
   };
 
+  handleChange3 = event => {
+    const { name, value } = event.target;
+    this.setState({
+      test3: {
+        ...this.state.test3,
+        [name]: value
+      }
+    });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     const { test1 } = this.state;
@@ -46,7 +62,7 @@ class App extends React.Component {
 
   _next = () => {
     let currentStep = this.state.currentStep;
-    currentStep = currentStep >= 6 ? 7 : currentStep + 1;
+    currentStep = currentStep >= 15 ? 16 : currentStep + 1;
     this.setState({
       currentStep: currentStep
     });
@@ -81,7 +97,7 @@ class App extends React.Component {
 
   nextButton() {
     let currentStep = this.state.currentStep;
-    if (currentStep < 7) {
+    if (currentStep < 16) {
       return (
         <button className='btn btn-primary' type='button' onClick={this._next}>
           Next
@@ -108,12 +124,12 @@ class App extends React.Component {
               handleChange={this.handleChange2}
               state={this.state}
             />
-            {/*
+
             <Step3
               currentStep={this.state.currentStep}
-              handleChange={this.handleChange2}
+              handleChange={this.handleChange3}
               state={this.state}
-            /> */}
+            />
             <div className='conten-buttons'>
               {this.previousButton()}
               {this.nextButton()}
@@ -125,466 +141,5 @@ class App extends React.Component {
     );
   }
 }
-
-function Step1(props) {
-  const data = [
-    {
-      id: 1,
-      ask1: 'images/test-1/Pruebas/1/P1_1.svg',
-      ask2: 'images/test-1/Pruebas/1/P1_2.svg',
-      ask3: 'images/test-1/Pruebas/1/P1_3.svg',
-      ask4: 'images/test-1/Pruebas/1/P1_4.svg',
-      option1: 'images/test-1/Pruebas/1/P1_5.svg',
-      option2: 'images/test-1/Pruebas/1/P1_6.svg',
-      option3: 'images/test-1/Pruebas/1/P1_7.svg',
-      option4: 'images/test-1/Pruebas/1/P1_8.svg',
-      option5: 'images/test-1/Pruebas/1/P1_9.svg'
-    },
-    {
-      id: 2,
-      ask1: 'images/test-1/Pruebas/2/P2_1.svg',
-      ask2: 'images/test-1/Pruebas/2/P2_2.svg',
-      ask3: 'images/test-1/Pruebas/2/P2_3.svg',
-      ask4: 'images/test-1/Pruebas/2/P2_4.svg',
-      option1: 'images/test-1/Pruebas/2/P2_5.svg',
-      option2: 'images/test-1/Pruebas/2/P2_6.svg',
-      option3: 'images/test-1/Pruebas/2/P2_7.svg',
-      option4: 'images/test-1/Pruebas/2/P2_8.svg',
-      option5: 'images/test-1/Pruebas/2/P2_9.svg'
-    },
-    {
-      id: 3,
-      ask1: 'images/test-1/Pruebas/3/P3_1.svg',
-      ask2: 'images/test-1/Pruebas/3/P3_2.svg',
-      ask3: 'images/test-1/Pruebas/3/P3_3.svg',
-      ask4: 'images/test-1/Pruebas/3/P3_4.svg',
-      option1: 'images/test-1/Pruebas/3/P3_5.svg',
-      option2: 'images/test-1/Pruebas/3/P3_6.svg',
-      option3: 'images/test-1/Pruebas/3/P3_7.svg',
-      option4: 'images/test-1/Pruebas/3/P3_8.svg',
-      option5: 'images/test-1/Pruebas/3/P3_9.svg'
-    },
-    {
-      id: 4,
-      ask1: 'images/test-1/Pruebas/4/P4_1.svg',
-      ask2: 'images/test-1/Pruebas/4/P4_2.svg',
-      ask3: 'images/test-1/Pruebas/4/P4_3.svg',
-      ask4: 'images/test-1/Pruebas/4/P4_4.svg',
-      option1: 'images/test-1/Pruebas/4/P4_5.svg',
-      option2: 'images/test-1/Pruebas/4/P4_6.svg',
-      option3: 'images/test-1/Pruebas/4/P4_7.svg',
-      option4: 'images/test-1/Pruebas/4/P4_8.svg',
-      option5: 'images/test-1/Pruebas/4/P4_9.svg'
-    },
-    {
-      id: 5,
-      ask1: 'images/test-1/Pruebas/5/P5_1.svg',
-      ask2: 'images/test-1/Pruebas/5/P5_2.svg',
-      ask3: 'images/test-1/Pruebas/5/P5_3.svg',
-      ask4: 'images/test-1/Pruebas/5/P5_4.svg',
-      option1: 'images/test-1/Pruebas/5/P5_5.svg',
-      option2: 'images/test-1/Pruebas/5/P5_6.svg',
-      option3: 'images/test-1/Pruebas/5/P5_7.svg',
-      option4: 'images/test-1/Pruebas/5/P5_8.svg',
-      option5: 'images/test-1/Pruebas/5/P5_9.svg'
-    },
-    {
-      id: 6,
-      ask1: 'images/test-1/Pruebas/6/P6_1.svg',
-      ask2: 'images/test-1/Pruebas/6/P6_2.svg',
-      ask3: 'images/test-1/Pruebas/6/P6_3.svg',
-      ask4: 'images/test-1/Pruebas/6/P6_4.svg',
-      option1: 'images/test-1/Pruebas/6/P6_5.svg',
-      option2: 'images/test-1/Pruebas/6/P6_6.svg',
-      option3: 'images/test-1/Pruebas/6/P6_7.svg',
-      option4: 'images/test-1/Pruebas/6/P6_8.svg',
-      option5: 'images/test-1/Pruebas/6/P6_9.svg'
-    },
-    {
-      id: 7,
-      ask1: 'images/test-1/Pruebas/7/P7_1.svg',
-      ask2: 'images/test-1/Pruebas/7/P7_2.svg',
-      ask3: 'images/test-1/Pruebas/7/P7_3.svg',
-      ask4: 'images/test-1/Pruebas/7/P7_4.svg',
-      option1: 'images/test-1/Pruebas/7/P7_5.svg',
-      option2: 'images/test-1/Pruebas/7/P7_6.svg',
-      option3: 'images/test-1/Pruebas/7/P7_7.svg',
-      option4: 'images/test-1/Pruebas/7/P7_8.svg',
-      option5: 'images/test-1/Pruebas/7/P7_9.svg'
-    },
-    {
-      id: 8,
-      ask1: 'images/test-1/Pruebas/8/P8_1.svg',
-      ask2: 'images/test-1/Pruebas/8/P8_2.svg',
-      ask3: 'images/test-1/Pruebas/8/P8_3.svg',
-      ask4: 'images/test-1/Pruebas/8/P8_4.svg',
-      option1: 'images/test-1/Pruebas/8/P8_5.svg',
-      option2: 'images/test-1/Pruebas/8/P8_6.svg',
-      option3: 'images/test-1/Pruebas/8/P8_7.svg',
-      option4: 'images/test-1/Pruebas/8/P8_8.svg',
-      option5: 'images/test-1/Pruebas/8/P8_9.svg'
-    },
-    {
-      id: 9,
-      ask1: 'images/test-1/Pruebas/9/P9_1.svg',
-      ask2: 'images/test-1/Pruebas/9/P9_2.svg',
-      ask3: 'images/test-1/Pruebas/9/P9_3.svg',
-      ask4: 'images/test-1/Pruebas/9/P9_4.svg',
-      option1: 'images/test-1/Pruebas/9/P9_5.svg',
-      option2: 'images/test-1/Pruebas/9/P9_6.svg',
-      option3: 'images/test-1/Pruebas/9/P9_7.svg',
-      option4: 'images/test-1/Pruebas/9/P9_8.svg',
-      option5: 'images/test-1/Pruebas/9/P9_9.svg'
-    },
-    {
-      id: 10,
-      ask1: 'images/test-1/Pruebas/10/P10_1.svg',
-      ask2: 'images/test-1/Pruebas/10/P10_2.svg',
-      ask3: 'images/test-1/Pruebas/10/P10_3.svg',
-      ask4: 'images/test-1/Pruebas/10/P10_4.svg',
-      option1: 'images/test-1/Pruebas/10/P10_5.svg',
-      option2: 'images/test-1/Pruebas/10/P10_6.svg',
-      option3: 'images/test-1/Pruebas/10/P10_7.svg',
-      option4: 'images/test-1/Pruebas/10/P10_8.svg',
-      option5: 'images/test-1/Pruebas/10/P10_9.svg'
-    },
-    {
-      id: 11,
-      ask1: 'images/test-1/Pruebas/11/P11_1.svg',
-      ask2: 'images/test-1/Pruebas/11/P11_2.svg',
-      ask3: 'images/test-1/Pruebas/11/P11_3.svg',
-      ask4: 'images/test-1/Pruebas/11/P11_4.svg',
-      option1: 'images/test-1/Pruebas/11/P11_5.svg',
-      option2: 'images/test-1/Pruebas/11/P11_6.svg',
-      option3: 'images/test-1/Pruebas/11/P11_7.svg',
-      option4: 'images/test-1/Pruebas/11/P11_8.svg',
-      option5: 'images/test-1/Pruebas/11/P11_9.svg'
-    },
-    {
-      id: 12,
-      ask1: 'images/test-1/Pruebas/12/P12_1.svg',
-      ask2: 'images/test-1/Pruebas/12/P12_2.svg',
-      ask3: 'images/test-1/Pruebas/12/P12_3.svg',
-      ask4: 'images/test-1/Pruebas/12/P12_4.svg',
-      option1: 'images/test-1/Pruebas/12/P12_5.svg',
-      option2: 'images/test-1/Pruebas/12/P12_6.svg',
-      option3: 'images/test-1/Pruebas/12/P12_7.svg',
-      option4: 'images/test-1/Pruebas/12/P12_8.svg',
-      option5: 'images/test-1/Pruebas/12/P12_9.svg'
-    }
-  ];
-
-  const prueba = [
-    {
-      id: 1,
-      ask1: 'images/test-1/Ejemplo/1/1_1.svg',
-      ask2: 'images/test-1/Ejemplo/1/1_2.svg',
-      ask3: 'images/test-1/Ejemplo/1/1_3.svg',
-      ask4: 'images/test-1/Ejemplo/1/1_4.svg',
-      option1: 'images/test-1/Ejemplo/1/1_5.svg',
-      option2: 'images/test-1/Ejemplo/1/1_6.svg',
-      option3: 'images/test-1/Ejemplo/1/1_7.svg',
-      option4: 'images/test-1/Ejemplo/1/1_8.svg',
-      option5: 'images/test-1/Ejemplo/1/1_9.svg',
-      checked: 'a'
-    },
-    {
-      id: 2,
-      ask1: 'images/test-1/Ejemplo/2/2_1.svg',
-      ask2: 'images/test-1/Ejemplo/2/2_2.svg',
-      ask3: 'images/test-1/Ejemplo/2/2_3.svg',
-      ask4: 'images/test-1/Ejemplo/2/2_4.svg',
-      option1: 'images/test-1/Ejemplo/2/2_5.svg',
-      option2: 'images/test-1/Ejemplo/2/2_6.svg',
-      option3: 'images/test-1/Ejemplo/2/2_7.svg',
-      option4: 'images/test-1/Ejemplo/2/2_8.svg',
-      option5: 'images/test-1/Ejemplo/2/2_9.svg',
-      checked: 'e'
-    },
-    {
-      id: 3,
-      ask1: 'images/test-1/Ejemplo/3/3_1.svg',
-      ask2: 'images/test-1/Ejemplo/3/3_2.svg',
-      ask3: 'images/test-1/Ejemplo/3/3_3.svg',
-      ask4: 'images/test-1/Ejemplo/3/3_4.svg',
-      option1: 'images/test-1/Ejemplo/3/3_5.svg',
-      option2: 'images/test-1/Ejemplo/3/3_6.svg',
-      option3: 'images/test-1/Ejemplo/3/3_7.svg',
-      option4: 'images/test-1/Ejemplo/3/3_8.svg',
-      option5: 'images/test-1/Ejemplo/3/3_9.svg',
-      checked: 'c'
-    }
-  ];
-
-  const data1 = data.slice(0, 3);
-  const data2 = data.slice(3, 6);
-  const data3 = data.slice(6, 9);
-  const data4 = data.slice(9, 12);
-
-  if (
-    props.currentStep !== 1 &&
-    props.currentStep !== 2 &&
-    props.currentStep !== 3 &&
-    props.currentStep !== 4 &&
-    props.currentStep !== 5
-  ) {
-    return null;
-  }
-
-  if (props.currentStep === 1) {
-    return (
-      <React.Fragment>
-        <TestRowPrueba data={prueba} handleChange={props.handleChange} />
-      </React.Fragment>
-    );
-  }
-
-  if (props.currentStep === 2) {
-    return (
-      <React.Fragment>
-        <TestRow
-          state={props.state}
-          handleChange={props.handleChange}
-          data={data1}
-        />
-      </React.Fragment>
-    );
-  }
-
-  if (props.currentStep === 3) {
-    return (
-      <React.Fragment>
-        <TestRow
-          state={props.state}
-          handleChange={props.handleChange}
-          data={data2}
-        />
-      </React.Fragment>
-    );
-  }
-
-  if (props.currentStep === 4) {
-    return (
-      <React.Fragment>
-        <TestRow
-          state={props.state}
-          handleChange={props.handleChange}
-          data={data3}
-        />
-      </React.Fragment>
-    );
-  }
-
-  if (props.currentStep === 5) {
-    return (
-      <React.Fragment>
-        <TestRow
-          state={props.state}
-          handleChange={props.handleChange}
-          data={data4}
-        />
-      </React.Fragment>
-    );
-  }
-}
-
-function Step2(props) {
-  const prueba2 = [
-    {
-      id: 1,
-      option1: 1,
-      option2: 2,
-      option3: 3,
-      option4: 4,
-      option5: 5
-    },
-    {
-      id: 2,
-      option1: 1,
-      option2: 2,
-      option3: 3,
-      option4: 4,
-      option5: 5
-    }
-  ];
-
-  const data = [
-    {
-      id: 1,
-      option1: 1,
-      option2: 2,
-      option3: 3,
-      option4: 4,
-      option5: 5
-    },
-    {
-      id: 2,
-      option1: 1,
-      option2: 2,
-      option3: 3,
-      option4: 4,
-      option5: 5
-    },
-    {
-      id: 3,
-      option1: 1,
-      option2: 2,
-      option3: 3,
-      option4: 4,
-      option5: 5
-    }
-  ];
-
-  if (props.currentStep !== 6 && props.currentStep !== 7) {
-    return null;
-  }
-
-  if (props.currentStep === 6) {
-    // PRUEBA 2
-    return <TestRowPrueba2 onChange={props.handleChange} data={prueba2} />;
-  }
-
-  if (props.currentStep === 7) {
-    return (
-      <TestRow2 onChange={props.handleChange} state={props.state} data={data} />
-    );
-  }
-  // return (
-  //   <React.Fragment>
-  //     <TestRow
-  //       state={props.state}
-  //       handleChange={props.handleChange}
-  //       // data={data}
-  //     />
-  //   </React.Fragment>
-  // );
-}
-
-// function Step3(props) {
-//   if (props.currentStep !== 3) {
-//     return null;
-//   }
-//   return (
-//     <React.Fragment>
-//       <div className='Test__row'>
-//         <div className='Test_pregunta'>
-//           <div className='Test__object'>
-//             <div className='object_container'>
-//               <img
-//                 src={require('./assets/img/x.png')}
-//                 alt='Imagen 1'
-//                 className='img-fluid'
-//               />
-//             </div>
-//           </div>
-//           <div className='Test__object'>
-//             <div className='object_container'>
-//               <img src={employee} alt='Imagen 1' className='img-fluid' />
-//             </div>
-//           </div>
-//           <div className='Test__object'>
-//             <div className='object_container'>
-//               <img src={employee} alt='Imagen 1' className='img-fluid' />
-//             </div>
-//           </div>
-//           <div className='Test__object'>
-//             <div className='object_container dashed'>
-//               <img src={nada} alt='Imagen 1' className='img-fluid' />
-//             </div>
-//           </div>
-//         </div>
-//         <div className='Test_respuesta'>
-//           <div className='Test_respuesta__opcion'>
-//             <span className='opcion_name'>a</span>
-
-//             <input
-//               id='ask2-a'
-//               type='radio'
-//               name='pregunta2'
-//               value='a'
-//               checked={props.state.test2.pregunta2 === 'a'}
-//               onChange={props.handleChange}
-//             />
-//             <label
-//               style={{ backgroundImage: `url(${x})` }}
-//               className='label-opcion'
-//               htmlFor='ask2-a'
-//             ></label>
-//           </div>
-//           <div className='Test_respuesta__opcion'>
-//             <span className='opcion_name'>b</span>
-
-//             <input
-//               id='ask2-b'
-//               type='radio'
-//               name='pregunta2'
-//               value='b'
-//               checked={props.state.test2.pregunta2 === 'b'}
-//               onChange={props.handleChange}
-//             />
-//             <label
-//               style={{ backgroundImage: `url(${x})` }}
-//               className='label-opcion'
-//               htmlFor='ask2-b'
-//             ></label>
-//           </div>
-//           <div className='Test_respuesta__opcion'>
-//             <span className='opcion_name'>c</span>
-
-//             <input
-//               id='ask2-c'
-//               type='radio'
-//               name='pregunta2'
-//               value='c'
-//               checked={props.state.test2.pregunta2 === 'c'}
-//               onChange={props.handleChange}
-//             />
-//             <label
-//               style={{
-//                 backgroundImage: `url(${require('./assets/img/x.png')})`
-//               }}
-//               className='label-opcion pregunta2'
-//               htmlFor='ask2-c'
-//             ></label>
-//           </div>
-//           <div className='Test_respuesta__opcion'>
-//             <span className='opcion_name'>d</span>
-
-//             <input
-//               id='ask2-d'
-//               type='radio'
-//               name='pregunta2'
-//               value='d'
-//               checked={props.state.test2.pregunta2 === 'd'}
-//               onChange={props.handleChange}
-//             />
-//             <label
-//               style={{ backgroundImage: `url(${x})` }}
-//               className='label-opcion pregunta2'
-//               htmlFor='ask2-d'
-//             ></label>
-//           </div>
-//           <div className='Test_respuesta__opcion'>
-//             <span className='opcion_name'>e</span>
-//             <input
-//               id='ask2-e'
-//               type='radio'
-//               name='pregunta2'
-//               value='e'
-//               checked={props.state.test2.pregunta2 === 'e'}
-//               onChange={props.handleChange}
-//             />
-//             <label
-//               style={{ backgroundImage: `url(${x})` }}
-//               className='label-opcion pregunta2'
-//               htmlFor='ask2-e'
-//             ></label>
-//           </div>
-//         </div>
-//       </div>
-//       <button className='btn btn-success btn-block'>Sign up</button>
-//     </React.Fragment>
-//   );
-// }
 
 export default App;

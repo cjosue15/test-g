@@ -1,16 +1,21 @@
 import React from 'react';
 
+import './styles/TestRow.css';
+
+function getImage(id, opcion) {
+  return require(`../../assets/img/Test1/Ejemplo/${id}/${id}_${opcion}.svg`);
+}
+
 function TestRowPrueba(props) {
-  console.log(props);
   return (
-    <React.Fragment>
+    <div className='TestRow'>
       {props.data.map(row => (
         <div className='Test__row' key={row.id}>
           <div className='Test_pregunta'>
             <div className='Test__object'>
               <div className='object_container'>
                 <img
-                  src={row.ask1}
+                  src={getImage(row.id, row.ask1)}
                   alt={`Pregunta ${row.id}`}
                   className='img-fluid'
                 />
@@ -19,7 +24,7 @@ function TestRowPrueba(props) {
             <div className='Test__object'>
               <div className='object_container'>
                 <img
-                  src={`${row.ask2}`}
+                  src={getImage(row.id, row.ask2)}
                   alt={`Pregunta ${row.id}`}
                   className='img-fluid'
                 />
@@ -28,7 +33,7 @@ function TestRowPrueba(props) {
             <div className='Test__object'>
               <div className='object_container'>
                 <img
-                  src={`${row.ask3}`}
+                  src={getImage(row.id, row.ask3)}
                   alt={`Pregunta ${row.id}`}
                   className='img-fluid'
                 />
@@ -37,7 +42,7 @@ function TestRowPrueba(props) {
             <div className='Test__object'>
               <div className='object_container dashed'>
                 <img
-                  src={`${row.ask4}`}
+                  src={getImage(row.id, row.ask4)}
                   alt={`Pregunta ${row.id}`}
                   className='img-fluid'
                 />
@@ -45,7 +50,10 @@ function TestRowPrueba(props) {
             </div>
           </div>
           <div className='Test_respuesta'>
-            <div className='Test_respuesta__opcion'>
+            <label
+              htmlFor={`ask${row.id}-a`}
+              className='Test_respuesta__opcion'
+            >
               <span className='opcion_name'>a</span>
               <input
                 id={`ask${row.id}-a`}
@@ -54,13 +62,12 @@ function TestRowPrueba(props) {
                 value='a'
                 defaultChecked={row.checked === 'a'}
               />
-              <label
-                style={{ backgroundImage: `url(${`${row.option1}`})` }}
-                className='label-opcion'
-                htmlFor={`ask${row.id}-a`}
-              ></label>
-            </div>
-            <div className='Test_respuesta__opcion'>
+              <img src={getImage(row.id, row.option1)} alt='' />
+            </label>
+            <label
+              htmlFor={`ask${row.id}-b`}
+              className='Test_respuesta__opcion'
+            >
               <span className='opcion_name'>b</span>
               <input
                 id={`ask${row.id}-b`}
@@ -69,13 +76,12 @@ function TestRowPrueba(props) {
                 value='b'
                 defaultChecked={row.checked === 'b'}
               />
-              <label
-                style={{ backgroundImage: `url(${`${row.option2}`})` }}
-                className='label-opcion'
-                htmlFor={`ask${row.id}-b`}
-              ></label>
-            </div>
-            <div className='Test_respuesta__opcion'>
+              <img src={getImage(row.id, row.option2)} alt='' />
+            </label>
+            <label
+              htmlFor={`ask${row.id}-c`}
+              className='Test_respuesta__opcion'
+            >
               <span className='opcion_name'>c</span>
               <input
                 id={`ask${row.id}-c`}
@@ -84,13 +90,12 @@ function TestRowPrueba(props) {
                 value='c'
                 defaultChecked={row.checked === 'c'}
               />
-              <label
-                style={{ backgroundImage: `url(${`${row.option3}`})` }}
-                className='label-opcion'
-                htmlFor={`ask${row.id}-c`}
-              ></label>
-            </div>
-            <div className='Test_respuesta__opcion'>
+              <img src={getImage(row.id, row.option3)} alt='' />
+            </label>
+            <label
+              htmlFor={`ask${row.id}-d`}
+              className='Test_respuesta__opcion'
+            >
               <span className='opcion_name'>d</span>
               <input
                 id={`ask${row.id}-d`}
@@ -99,13 +104,12 @@ function TestRowPrueba(props) {
                 value='d'
                 defaultChecked={row.checked === 'd'}
               />
-              <label
-                style={{ backgroundImage: `url(${`${row.option4}`})` }}
-                className='label-opcion'
-                htmlFor={`ask${row.id}-d`}
-              ></label>
-            </div>
-            <div className='Test_respuesta__opcion'>
+              <img src={getImage(row.id, row.option4)} alt='' />
+            </label>
+            <label
+              htmlFor={`ask${row.id}-e`}
+              className='Test_respuesta__opcion'
+            >
               <span className='opcion_name'>e</span>
               <input
                 id={`ask${row.id}-e`}
@@ -114,16 +118,12 @@ function TestRowPrueba(props) {
                 value='e'
                 defaultChecked={row.checked === 'e'}
               />
-              <label
-                style={{ backgroundImage: `url(${`${row.option5}`})` }}
-                className='label-opcion'
-                htmlFor={`ask${row.id}-e`}
-              ></label>
-            </div>
+              <img src={getImage(row.id, row.option5)} alt='' />
+            </label>
           </div>
         </div>
       ))}
-    </React.Fragment>
+    </div>
   );
 }
 
