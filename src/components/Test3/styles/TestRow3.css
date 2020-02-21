@@ -1,8 +1,8 @@
-/* HIDE RADIO */
 .TestRow3 {
   display: grid;
   grid-template-columns: minmax(auto, 900px);
   justify-content: center;
+  margin-top: 50px;
 }
 
 .TestRow3__row {
@@ -39,4 +39,9 @@
 
 .test3 img {
   height: 50px;
+}
+
+.TestRow3__title {
+  text-align: center;
+  margin-bottom: 50px;
 }

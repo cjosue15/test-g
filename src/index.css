@@ -46,6 +46,7 @@ h6 {
 .conten-buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .btn-primary {
@@ -92,14 +93,6 @@ button[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
-}
-
-.counter__error {
-  margin: 0 3px;
-}
-
-.ErrorsForm p span:last-child {
-  display: none;
 }
 
 p {

@@ -1,0 +1,17 @@
+.ErrorsForm {
+  background: #ff0000c2;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.counter__error {
+  margin: 0 3px;
+}
+
+.ErrorsForm p span:last-child {
+  display: none;
+}

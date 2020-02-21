@@ -186,9 +186,6 @@ class App extends React.Component {
 
     if (filteredArray.length === 0) {
       isValid = true;
-      this.setState({ showErrors: false });
-    } else {
-      this.setState({ showErrors: true });
     }
 
     this.setState({ formValid: isValid });
@@ -235,7 +232,7 @@ class App extends React.Component {
           type='button'
           onClick={this._prev}
         >
-          Previous
+          Anterior
         </button>
       );
     }
@@ -247,7 +244,7 @@ class App extends React.Component {
     if (currentStep < 20) {
       return (
         <button className='btn btn-primary' type='button' onClick={this._next}>
-          Next
+          Siguiente
         </button>
       );
     }
@@ -258,10 +255,20 @@ class App extends React.Component {
     const currentStep = this.state.currentStep;
     if (currentStep === 20)
       return (
-        <button className='btn btn-primary' onClick={this.validateForm}>
-          Send
+        <button
+          className='btn btn-primary'
+          onClick={() => {
+            this.validateForm();
+            this.showError();
+          }}
+        >
+          Terminar Test
         </button>
       );
+  }
+
+  showError() {
+    this.setState({ showErrors: true });
   }
 
   showDivError() {
@@ -284,7 +291,7 @@ class App extends React.Component {
       <React.Fragment>
         <Navbar />
         <div className='container'>
-          <p>Step {this.state.currentStep} </p>
+          {/* <p>Step {this.state.currentStep} </p> */}
           {/* {this.state.showErrors && !this.state.formValid && (
             <div className='ErrorsForm'>
               <ErrorsForm test={'Test 1'} errors={this.state.errorTest1} />

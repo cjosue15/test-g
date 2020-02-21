@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: minmax(auto, 1000px);
   justify-content: center;
+  margin-top: 50px;
 }
 
 .TestRow4__row {
@@ -39,4 +40,9 @@
 .TestRow4__counter {
   position: relative;
   top: 20px;
+}
+
+.TestRow4__title {
+  text-align: center;
+  margin-bottom: 50px;
 }

@@ -8,12 +8,13 @@ function getImage(id, opcion) {
 function TestRowPrueba2(props) {
   return (
     <div className='TestRow2'>
-      <h1>Test 2</h1>
+      <h1 className='TestRow2__title'>Ejemplos del Test 2</h1>
       <div className='TestRow2__container'>
         {props.data.map(row => (
           <div className='TestRow2__row' key={row.id}>
-            <span className='TestRow2__counter'>{row.id}</span>
+            <span className='TestRow2__counter'>E{row.id}</span>
             <label className='TestRow2__object'>
+              <span className='TestRow2__letter'>a</span>
               <input
                 defaultChecked={row.checked === 'a'}
                 type='radio'
@@ -24,6 +25,7 @@ function TestRowPrueba2(props) {
             </label>
 
             <label className='TestRow2__object'>
+              <span className='TestRow2__letter'>b</span>
               <input
                 defaultChecked={row.checked === 'b'}
                 type='radio'
@@ -33,6 +35,7 @@ function TestRowPrueba2(props) {
               <img src={getImage(row.id, row.option2)} alt='' />
             </label>
             <label className='TestRow2__object'>
+              <span className='TestRow2__letter'>c</span>
               <input
                 defaultChecked={row.checked === 'c'}
                 type='radio'
@@ -42,6 +45,7 @@ function TestRowPrueba2(props) {
               <img src={getImage(row.id, row.option3)} alt='' />
             </label>
             <label className='TestRow2__object'>
+              <span className='TestRow2__letter'>d</span>
               <input
                 defaultChecked={row.checked === 'd'}
                 type='radio'
@@ -51,6 +55,7 @@ function TestRowPrueba2(props) {
               <img src={getImage(row.id, row.option4)} alt='' />
             </label>
             <label className='TestRow2__object'>
+              <span className='TestRow2__letter'>e</span>
               <input
                 defaultChecked={row.checked === 'e'}
                 type='radio'

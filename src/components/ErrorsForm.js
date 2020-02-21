@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/ErrorsForm.css';
 
 function ErrorsForm(props) {
   const errors = props.errors;

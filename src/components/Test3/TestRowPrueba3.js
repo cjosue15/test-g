@@ -8,11 +8,11 @@ function getImage(id, opcion) {
 function TestRowPrueba3(props) {
   return (
     <div className='TestRow3'>
-      <h1>Test 3</h1>
+      <h1 className='TestRow3__title'>Ejemplos del Test 3</h1>
       <div className='TestRow3__container'>
         {props.data.map(row => (
           <div className='TestRow3__row' key={row.id}>
-            <span className='TestRow3__counter'>{row.id}</span>
+            <span className='TestRow3__counter'>E{row.id}</span>
             <label className='TestRow3__object option'>
               <img src={getImage(row.id, row.option1)} alt='' />
             </label>
