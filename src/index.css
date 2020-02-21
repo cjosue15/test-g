@@ -93,3 +93,16 @@ button[disabled] {
   background-color: #cccccc;
   color: #666666;
 }
+
+.counter__error {
+  margin: 0 3px;
+}
+
+.ErrorsForm p span:last-child {
+  display: none;
+}
+
+p {
+  margin-bottom: 15px;
+  margin-top: 0;
+}

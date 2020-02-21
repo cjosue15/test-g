@@ -14,6 +14,7 @@ import Step3 from './components/Test3/Step3';
 import Step4 from './components/Test4/Step4';
 
 import './App.css';
+import ErrorsForm from './components/ErrorsForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,116 +26,130 @@ class App extends React.Component {
       test3: {},
       test4: {},
       errorTest1: {
-        pregunta1: false,
-        pregunta2: false,
-        pregunta3: false,
-        pregunta4: false,
-        pregunta5: false,
-        pregunta6: false,
-        pregunta7: false,
-        pregunta8: false,
-        pregunta9: false,
-        pregunta10: false,
-        pregunta11: false,
-        pregunta12: false
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
+        9: false,
+        10: false,
+        11: false,
+        12: false
       },
       errorTest2: {
-        pregunta1: false,
-        pregunta2: false,
-        pregunta3: false,
-        pregunta4: false,
-        pregunta5: false,
-        pregunta6: false,
-        pregunta7: false,
-        pregunta8: false,
-        pregunta9: false,
-        pregunta10: false,
-        pregunta11: false,
-        pregunta12: false,
-        pregunta13: false,
-        pregunta14: false
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
+        9: false,
+        10: false,
+        11: false,
+        12: false,
+        13: false,
+        14: false
       },
       errorTest3: {
-        pregunta1: false,
-        pregunta2: false,
-        pregunta3: false,
-        pregunta4: false,
-        pregunta5: false,
-        pregunta6: false,
-        pregunta7: false,
-        pregunta8: false,
-        pregunta9: false,
-        pregunta10: false,
-        pregunta11: false,
-        pregunta12: false
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
+        9: false,
+        10: false,
+        11: false,
+        12: false
       },
       errorTest4: {
-        pregunta1: false,
-        pregunta2: false,
-        pregunta3: false,
-        pregunta4: false,
-        pregunta5: false,
-        pregunta6: false,
-        pregunta7: false,
-        pregunta8: false
-      }
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false
+      },
+      formValid: false,
+      showErrors: false
     };
   }
 
   handleChange1 = event => {
     const { name, value, checked } = event.target;
-    this.setState({
-      test1: {
-        ...this.state.test1,
-        [name]: value
+    this.setState(
+      {
+        test1: {
+          ...this.state.test1,
+          [name]: value
+        },
+        errorTest1: {
+          ...this.state.errorTest1,
+          [name]: checked
+        }
       },
-      errorTest1: {
-        ...this.state.errorTest1,
-        [name]: checked
-      }
-    });
+      this.validateForm
+    );
   };
 
   handleChange2 = event => {
     const { name, value, checked } = event.target;
-    this.setState({
-      test2: {
-        ...this.state.test2,
-        [name]: value
+    this.setState(
+      {
+        test2: {
+          ...this.state.test2,
+          [name]: value
+        },
+        errorTest2: {
+          ...this.state.errorTest2,
+          [name]: checked
+        }
       },
-      errorTest2: {
-        ...this.state.errorTest2,
-        [name]: checked
-      }
-    });
+      this.validateForm
+    );
   };
 
   handleChange3 = event => {
     const { name, value, checked } = event.target;
-    this.setState({
-      test3: {
-        ...this.state.test3,
-        [name]: value
+    this.setState(
+      {
+        test3: {
+          ...this.state.test3,
+          [name]: value
+        },
+        errorTest3: {
+          ...this.state.errorTest3,
+          [name]: checked
+        }
       },
-      errorTest3: {
-        ...this.state.errorTest3,
-        [name]: checked
-      }
-    });
+      this.validateForm
+    );
   };
 
   handleChange4 = event => {
     const { name, value, checked } = event.target;
-    this.setState({
-      test4: {
-        ...this.state.test4,
-        [name]: value
+    this.setState(
+      {
+        test4: {
+          ...this.state.test4,
+          [name]: value
+        },
+        errorTest4: {
+          ...this.state.errorTest4,
+          [name]: checked
+        }
       },
-      errorTest4: {
-        ...this.state.errorTest4,
-        [name]: checked
-      }
-    });
+      this.validateForm
+    );
   };
 
   validateForm = () => {
@@ -144,38 +159,52 @@ class App extends React.Component {
     const radioStates3 = this.state.errorTest3;
     const radioStates4 = this.state.errorTest4;
 
-    const radios = {
-      ...radioStates1,
-      ...radioStates2,
-      ...radioStates3,
-      ...radioStates4
-    };
-
-    const checkedStatus = Object.keys(radios).map(key => {
-      return radios[key];
+    const checkedStatus1 = Object.keys(radioStates1).map(key => {
+      return radioStates1[key];
     });
+
+    const checkedStatus2 = Object.keys(radioStates2).map(key => {
+      return radioStates2[key];
+    });
+
+    const checkedStatus3 = Object.keys(radioStates3).map(key => {
+      return radioStates3[key];
+    });
+
+    const checkedStatus4 = Object.keys(radioStates4).map(key => {
+      return radioStates4[key];
+    });
+
+    const checkedStatus = [
+      ...checkedStatus1,
+      ...checkedStatus2,
+      ...checkedStatus3,
+      ...checkedStatus4
+    ];
 
     const filteredArray = checkedStatus.filter(value => value === false);
 
-    // console.log(filteredArray);
-
     if (filteredArray.length === 0) {
       isValid = true;
+      this.setState({ showErrors: false });
+    } else {
+      this.setState({ showErrors: true });
     }
 
-    return isValid;
+    this.setState({ formValid: isValid });
   };
 
   handleSubmit = event => {
     event.preventDefault();
+    if (!this.state.formValid) {
+      return;
+    }
     const { test1 } = this.state;
     const { test2 } = this.state;
     const { test3 } = this.state;
     const { test4 } = this.state;
 
-    if (this.validateForm()) {
-      console.log({ test1, test2, test3, test4 });
-    }
+    console.log({ test1, test2, test3, test4 });
   };
 
   _next = () => {
@@ -235,12 +264,38 @@ class App extends React.Component {
       );
   }
 
+  showDivError() {
+    if (this.state.showErrors) {
+      if (!this.state.formValid) {
+        return (
+          <div className='ErrorsForm'>
+            <ErrorsForm test={'Test 1'} errors={this.state.errorTest1} />
+            <ErrorsForm test={'Test 2'} errors={this.state.errorTest2} />
+            <ErrorsForm test={'Test 3'} errors={this.state.errorTest3} />
+            <ErrorsForm test={'Test 4'} errors={this.state.errorTest4} />
+          </div>
+        );
+      }
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
         <Navbar />
         <div className='container'>
           <p>Step {this.state.currentStep} </p>
+          {/* {this.state.showErrors && !this.state.formValid && (
+            <div className='ErrorsForm'>
+              <ErrorsForm test={'Test 1'} errors={this.state.errorTest1} />
+              <ErrorsForm test={'Test 2'} errors={this.state.errorTest2} />
+              <ErrorsForm test={'Test 3'} errors={this.state.errorTest3} />
+              <ErrorsForm test={'Test 4'} errors={this.state.errorTest4} />
+            </div>
+          )} */}
+
+          {this.showDivError()}
+
           <form onSubmit={this.handleSubmit}>
             <Step1
               currentStep={this.state.currentStep}

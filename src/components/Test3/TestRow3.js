@@ -19,9 +19,9 @@ function TestRowPrueba3(props) {
               <span className='letter'>a</span>
               <input
                 onChange={props.onChange}
-                checked={props.state.test3[`pregunta${row.id}`] === 'a'}
+                checked={props.state.test3[`${row.id}`] === 'a'}
                 type='radio'
-                name={`pregunta${row.id}`}
+                name={`${row.id}`}
                 value='a'
               />
               <img src={getImage(row.id, row.option2)} alt='' />
@@ -32,9 +32,9 @@ function TestRowPrueba3(props) {
 
               <input
                 onChange={props.onChange}
-                checked={props.state.test3[`pregunta${row.id}`] === 'b'}
+                checked={props.state.test3[`${row.id}`] === 'b'}
                 type='radio'
-                name={`pregunta${row.id}`}
+                name={`${row.id}`}
                 value='b'
               />
               <img src={getImage(row.id, row.option3)} alt='' />
@@ -44,9 +44,9 @@ function TestRowPrueba3(props) {
 
               <input
                 onChange={props.onChange}
-                checked={props.state.test3[`pregunta${row.id}`] === 'c'}
+                checked={props.state.test3[`${row.id}`] === 'c'}
                 type='radio'
-                name={`pregunta${row.id}`}
+                name={`${row.id}`}
                 value='c'
               />
               <img src={getImage(row.id, row.option4)} alt='' />
@@ -56,9 +56,9 @@ function TestRowPrueba3(props) {
 
               <input
                 onChange={props.onChange}
-                checked={props.state.test3[`pregunta${row.id}`] === 'd'}
+                checked={props.state.test3[`${row.id}`] === 'd'}
                 type='radio'
-                name={`pregunta${row.id}`}
+                name={`${row.id}`}
                 value='d'
               />
               <img src={getImage(row.id, row.option5)} alt='' />
@@ -68,9 +68,9 @@ function TestRowPrueba3(props) {
 
               <input
                 onChange={props.onChange}
-                checked={props.state.test3[`pregunta${row.id}`] === 'e'}
+                checked={props.state.test3[`${row.id}`] === 'e'}
                 type='radio'
-                name={`pregunta${row.id}`}
+                name={`${row.id}`}
                 value='e'
               />
               <img src={getImage(row.id, row.option6)} alt='' />
