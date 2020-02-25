@@ -216,47 +216,53 @@ function Step1(props) {
     );
   }
 
-  return (
-    <div className='Timer1'>
-      {props.children}
-      {props.currentStep === 2 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data1}
-          />
-        </React.Fragment>
-      )}
-      {props.currentStep === 3 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data2}
-          />
-        </React.Fragment>
-      )}
-      {props.currentStep === 4 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data3}
-          />
-        </React.Fragment>
-      )}
-      {props.currentStep === 5 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data4}
-          />
-        </React.Fragment>
-      )}
-    </div>
-  );
+  if (props.currentStep === 2) {
+    return (
+      <React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data1}
+        />
+      </React.Fragment>
+    );
+  }
+
+  if (props.currentStep === 3) {
+    return (
+      <React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data2}
+        />
+      </React.Fragment>
+    );
+  }
+
+  if (props.currentStep === 4) {
+    return (
+      <React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data3}
+        />
+      </React.Fragment>
+    );
+  }
+
+  if (props.currentStep === 5) {
+    return (
+      <React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data4}
+        />
+      </React.Fragment>
+    );
+  }
 }
 
 export default Step1;

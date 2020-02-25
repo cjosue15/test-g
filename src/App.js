@@ -14,7 +14,8 @@ import Step3 from './components/Test3/Step3';
 import Step4 from './components/Test4/Step4';
 
 import './App.css';
-import ErrorsForm from './components/ErrorsForm';
+import Timer from './components/Timer';
+// import ErrorsForm from './components/ErrorsForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -225,6 +226,11 @@ class App extends React.Component {
    */
   previousButton() {
     let currentStep = this.state.currentStep;
+
+    if (currentStep === 6) {
+      return <span></span>;
+    }
+
     if (currentStep !== 1) {
       return (
         <button
@@ -241,6 +247,11 @@ class App extends React.Component {
 
   nextButton() {
     let currentStep = this.state.currentStep;
+
+    if (currentStep === 5) {
+      return null;
+    }
+
     if (currentStep < 20) {
       return (
         <button className='btn btn-primary' type='button' onClick={this._next}>
@@ -271,20 +282,28 @@ class App extends React.Component {
     this.setState({ showErrors: true });
   }
 
-  showDivError() {
-    if (this.state.showErrors) {
-      if (!this.state.formValid) {
-        return (
-          <div className='ErrorsForm'>
-            <ErrorsForm test={'Test 1'} errors={this.state.errorTest1} />
-            <ErrorsForm test={'Test 2'} errors={this.state.errorTest2} />
-            <ErrorsForm test={'Test 3'} errors={this.state.errorTest3} />
-            <ErrorsForm test={'Test 4'} errors={this.state.errorTest4} />
-          </div>
-        );
-      }
+  // showDivError() {
+  //   if (this.state.showErrors) {
+  //     if (!this.state.formValid) {
+  //       return (
+  //         <div className='ErrorsForm'>
+  //           <ErrorsForm test={'Test 1'} errors={this.state.errorTest1} />
+  //           <ErrorsForm test={'Test 2'} errors={this.state.errorTest2} />
+  //           <ErrorsForm test={'Test 3'} errors={this.state.errorTest3} />
+  //           <ErrorsForm test={'Test 4'} errors={this.state.errorTest4} />
+  //         </div>
+  //       );
+  //     }
+  //   }
+  // }
+
+  callBackTimer1 = (seconds, minutes) => {
+    if (seconds === 0 && minutes === 0) {
+      this.setState({
+        currentStep: 6
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -301,14 +320,20 @@ class App extends React.Component {
             </div>
           )} */}
 
-          {this.showDivError()}
+          {/* {this.showDivError()} */}
 
           <form onSubmit={this.handleSubmit}>
             <Step1
               currentStep={this.state.currentStep}
               handleChange={this.handleChange1}
               state={this.state}
-            />
+            >
+              <Timer
+                minutes={1}
+                seconds={10}
+                callBackTimer={this.callBackTimer1}
+              />
+            </Step1>
             <Step2
               currentStep={this.state.currentStep}
               handleChange={this.handleChange2}
