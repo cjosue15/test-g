@@ -122,8 +122,7 @@ function Step4(props) {
     props.currentStep !== 17 &&
     props.currentStep !== 18 &&
     props.currentStep !== 19 &&
-    props.currentStep !== 20 &&
-    props.currentStep !== 21
+    props.currentStep !== 20
   ) {
     return null;
   }
@@ -133,52 +132,38 @@ function Step4(props) {
     return <TestRowPrueba4 data={prueba4} />;
   }
 
-  if (props.currentStep === 21) {
-    return <h1>Gracias</h1>;
+  if (props.currentStep === 18) {
+    return (
+      <TestRow4
+        data={data1}
+        onChange={props.handleChange}
+        state={props.state}
+      />
+    );
   }
 
-  return (
-    <div className='TestRow4'>
-      <div className='TestRow4__container'>
-        {props.children}
-        {props.currentStep === 18 && (
-          <TestRow4
-            data={data1}
-            onChange={props.handleChange}
-            state={props.state}
-          />
-        )}
-        {props.currentStep === 19 && (
-          <TestRow4
-            data={data2}
-            onChange={props.handleChange}
-            state={props.state}
-          />
-        )}
-        {props.currentStep === 20 && (
-          <TestRow4
-            data={data3}
-            onChange={props.handleChange}
-            state={props.state}
-          />
-        )}
-        {/* {props.currentStep === 21 && <h1>Gracias</h1>} */}
-      </div>
-    </div>
-  );
+  if (props.currentStep === 19) {
+    return (
+      <TestRow4
+        data={data2}
+        onChange={props.handleChange}
+        state={props.state}
+      />
+    );
+  }
 
-  // if (props.currentStep === 20) {
-  //   return (
-  //     <React.Fragment>
-  //       <TestRow4
-  //         data={data3}
-  //         onChange={props.handleChange}
-  //         state={props.state}
-  //       />
-  //       {/* <button>send</button> */}
-  //     </React.Fragment>
-  //   );
-  // }
+  if (props.currentStep === 20) {
+    return (
+      <React.Fragment>
+        <TestRow4
+          data={data3}
+          onChange={props.handleChange}
+          state={props.state}
+        />
+        {/* <button>send</button> */}
+      </React.Fragment>
+    );
+  }
 }
 
 export default Step4;

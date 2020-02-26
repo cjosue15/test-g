@@ -193,10 +193,10 @@ class App extends React.Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
-    if (!this.state.formValid) {
-      return;
-    }
+    // event.preventDefault();
+    // if (!this.state.formValid) {
+    //   return;
+    // }
     const { test1 } = this.state;
     const { test2 } = this.state;
     const { test3 } = this.state;
@@ -227,7 +227,16 @@ class App extends React.Component {
   previousButton() {
     let currentStep = this.state.currentStep;
 
-    if (currentStep === 6) {
+    if (
+      currentStep === 2 ||
+      currentStep === 6 ||
+      currentStep === 7 ||
+      currentStep === 12 ||
+      currentStep === 13 ||
+      currentStep === 17 ||
+      currentStep === 18 ||
+      currentStep === 21
+    ) {
       return <span></span>;
     }
 
@@ -248,7 +257,7 @@ class App extends React.Component {
   nextButton() {
     let currentStep = this.state.currentStep;
 
-    if (currentStep === 5) {
+    if (currentStep === 5 || currentStep === 11 || currentStep === 16) {
       return null;
     }
 
@@ -297,13 +306,150 @@ class App extends React.Component {
   //   }
   // }
 
-  callBackTimer1 = (seconds, minutes) => {
+  callBackTimer = (seconds, minutes, step) => {
     if (seconds === 0 && minutes === 0) {
-      this.setState({
-        currentStep: 6
-      });
+      switch (step) {
+        case 1:
+          this.setState({
+            currentStep: 6
+          });
+          break;
+        case 2:
+          this.setState({
+            currentStep: 12
+          });
+          break;
+        case 3:
+          this.setState({
+            currentStep: 17
+          });
+          break;
+        case 4:
+          this.handleSubmit();
+          this.setState({
+            currentStep: 21
+          });
+          break;
+        default:
+          break;
+      }
     }
   };
+
+  Step1() {
+    const step = this.state.currentStep;
+
+    let step1 = null;
+
+    if (step === 1 || step === 2 || step === 3 || step === 4 || step === 5) {
+      step1 = (
+        <Step1
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange1}
+          state={this.state}
+        >
+          <Timer
+            minutes={3}
+            seconds={0}
+            step={1}
+            callBackTimer={this.callBackTimer}
+          />
+        </Step1>
+      );
+    }
+    return step1;
+  }
+
+  Step2() {
+    const step = this.state.currentStep;
+
+    let step2 = null;
+
+    if (
+      step === 6 ||
+      step === 7 ||
+      step === 8 ||
+      step === 9 ||
+      step === 10 ||
+      step === 11
+    ) {
+      step2 = (
+        <Step2
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange2}
+          state={this.state}
+        >
+          <Timer
+            minutes={4}
+            seconds={0}
+            step={2}
+            callBackTimer={this.callBackTimer}
+          />
+        </Step2>
+      );
+    }
+    return step2;
+  }
+
+  Step3() {
+    const step = this.state.currentStep;
+
+    let step3 = null;
+
+    if (
+      step === 12 ||
+      step === 13 ||
+      step === 14 ||
+      step === 15 ||
+      step === 16
+    ) {
+      step3 = (
+        <Step3
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange3}
+          state={this.state}
+        >
+          <Timer
+            minutes={3}
+            seconds={0}
+            step={3}
+            callBackTimer={this.callBackTimer}
+          />
+        </Step3>
+      );
+    }
+    return step3;
+  }
+
+  Step4() {
+    const step = this.state.currentStep;
+
+    let step4 = null;
+
+    if (
+      step === 17 ||
+      step === 18 ||
+      step === 19 ||
+      step === 20 ||
+      step === 21
+    ) {
+      step4 = (
+        <Step4
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange4}
+          state={this.state}
+        >
+          <Timer
+            minutes={2}
+            seconds={30}
+            step={4}
+            callBackTimer={this.callBackTimer}
+          />
+        </Step4>
+      );
+    }
+    return step4;
+  }
 
   render() {
     return (
@@ -323,38 +469,18 @@ class App extends React.Component {
           {/* {this.showDivError()} */}
 
           <form onSubmit={this.handleSubmit}>
-            <Step1
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange1}
-              state={this.state}
-            >
-              <Timer
-                minutes={1}
-                seconds={10}
-                callBackTimer={this.callBackTimer1}
-              />
-            </Step1>
-            <Step2
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange2}
-              state={this.state}
-            />
+            {this.Step1()}
+            {this.Step2()}
+            {this.Step3()}
+            {this.Step4()}
 
-            <Step3
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange3}
-              state={this.state}
-            />
-            <Step4
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange4}
-              state={this.state}
-            />
-            <div className='conten-buttons'>
-              {this.previousButton()}
-              {this.nextButton()}
-              {this.sendButton()}
-            </div>
+            {this.state.currentStep !== 21 && (
+              <div className='conten-buttons'>
+                {this.previousButton()}
+                {this.nextButton()}
+                {this.sendButton()}
+              </div>
+            )}
           </form>
         </div>
       </React.Fragment>

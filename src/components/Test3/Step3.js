@@ -171,45 +171,41 @@ function Step3(props) {
     return <TestRowPrueba3 data={prueba3} />;
   }
 
-  if (props.currentStep === 13) {
-    return (
-      <TestRow3
-        onChange={props.handleChange}
-        data={data1}
-        state={props.state}
-      />
-    );
-  }
-
-  if (props.currentStep === 14) {
-    return (
-      <TestRow3
-        onChange={props.handleChange}
-        data={data2}
-        state={props.state}
-      />
-    );
-  }
-
-  if (props.currentStep === 15) {
-    return (
-      <TestRow3
-        onChange={props.handleChange}
-        data={data3}
-        state={props.state}
-      />
-    );
-  }
-
-  if (props.currentStep === 16) {
-    return (
-      <TestRow3
-        onChange={props.handleChange}
-        data={data4}
-        state={props.state}
-      />
-    );
-  }
+  return (
+    <div className='TestRow3'>
+      <div className='TestRow3__container'>
+        {props.children}
+        {props.currentStep === 13 && (
+          <TestRow3
+            onChange={props.handleChange}
+            data={data1}
+            state={props.state}
+          />
+        )}
+        {props.currentStep === 14 && (
+          <TestRow3
+            onChange={props.handleChange}
+            data={data2}
+            state={props.state}
+          />
+        )}
+        {props.currentStep === 15 && (
+          <TestRow3
+            onChange={props.handleChange}
+            data={data3}
+            state={props.state}
+          />
+        )}
+        {props.currentStep === 16 && (
+          <TestRow3
+            onChange={props.handleChange}
+            data={data4}
+            state={props.state}
+          />
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Step3;

@@ -209,51 +209,39 @@ function Step1(props) {
   }
 
   if (props.currentStep === 1) {
-    return (
-      <React.Fragment>
-        <TestRowPrueba data={prueba} handleChange={props.handleChange} />
-      </React.Fragment>
-    );
+    return <TestRowPrueba data={prueba} />;
   }
 
   return (
-    <div className='Timer1'>
+    <div className='TestRow'>
       {props.children}
       {props.currentStep === 2 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data1}
-          />
-        </React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data1}
+        />
       )}
       {props.currentStep === 3 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data2}
-          />
-        </React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data2}
+        />
       )}
       {props.currentStep === 4 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data3}
-          />
-        </React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data3}
+        />
       )}
       {props.currentStep === 5 && (
-        <React.Fragment>
-          <TestRow
-            state={props.state}
-            handleChange={props.handleChange}
-            data={data4}
-          />
-        </React.Fragment>
+        <TestRow
+          state={props.state}
+          handleChange={props.handleChange}
+          data={data4}
+        />
       )}
     </div>
   );

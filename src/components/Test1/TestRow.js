@@ -6,7 +6,7 @@ function getImage(id, opcion) {
 
 function TestRow(props) {
   return (
-    <div className='TestRow'>
+    <React.Fragment>
       {props.data.map(row => (
         <div className='Test__row' key={row.id}>
           <div className='Test_pregunta'>
@@ -127,7 +127,7 @@ function TestRow(props) {
           </div>
         </div>
       ))}
-    </div>
+    </React.Fragment>
   );
 }
 

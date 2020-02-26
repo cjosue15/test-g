@@ -165,52 +165,58 @@ function Step2(props) {
 
   if (props.currentStep === 6) {
     // PRUEBA 2
-    return <TestRowPrueba2 data={prueba2} />;
+    return <TestRowPrueba2 onChange={props.handleChange} data={prueba2} />;
   }
 
-  return (
-    <div className='TestRow2'>
-      <div className='TestRow2__container'>
-        {props.children}
+  if (props.currentStep === 7) {
+    return (
+      <TestRow2
+        onChange={props.handleChange}
+        state={props.state}
+        data={data1}
+      />
+    );
+  }
 
-        {props.currentStep === 7 && (
-          <TestRow2
-            onChange={props.handleChange}
-            state={props.state}
-            data={data1}
-          />
-        )}
-        {props.currentStep === 8 && (
-          <TestRow2
-            onChange={props.handleChange}
-            state={props.state}
-            data={data2}
-          />
-        )}
-        {props.currentStep === 9 && (
-          <TestRow2
-            onChange={props.handleChange}
-            state={props.state}
-            data={data3}
-          />
-        )}
-        {props.currentStep === 10 && (
-          <TestRow2
-            onChange={props.handleChange}
-            state={props.state}
-            data={data4}
-          />
-        )}
-        {props.currentStep === 11 && (
-          <TestRow2
-            onChange={props.handleChange}
-            state={props.state}
-            data={data5}
-          />
-        )}
-      </div>
-    </div>
-  );
+  if (props.currentStep === 8) {
+    return (
+      <TestRow2
+        onChange={props.handleChange}
+        state={props.state}
+        data={data2}
+      />
+    );
+  }
+
+  if (props.currentStep === 9) {
+    return (
+      <TestRow2
+        onChange={props.handleChange}
+        state={props.state}
+        data={data3}
+      />
+    );
+  }
+
+  if (props.currentStep === 10) {
+    return (
+      <TestRow2
+        onChange={props.handleChange}
+        state={props.state}
+        data={data4}
+      />
+    );
+  }
+
+  if (props.currentStep === 11) {
+    return (
+      <TestRow2
+        onChange={props.handleChange}
+        state={props.state}
+        data={data5}
+      />
+    );
+  }
 }
 
 export default Step2;

@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import './styles/Timer.css';
 
 function Timer(props) {
-  const { seconds, minutes } = props;
+  const { seconds, minutes, callBackTimer, step } = props;
 
   const [secondState, setSecondState] = useState({ seconds });
   const [minuteState, setminuteState] = useState({ minutes });
 
   useEffect(() => {
-    const { seconds } = secondState;
-    const { minutes } = minuteState;
-
     const intervalId = setInterval(() => {
-      props.callBackTimer(seconds, minutes);
-
-      if (seconds > 0) {
+      if (secondState.seconds > 0) {
         setSecondState({
-          seconds: seconds - 1
+          seconds: secondState.seconds - 1
         });
       }
 
-      if (seconds === 0) {
-        if (minutes === 0) {
+      if (secondState.seconds === 0) {
+        if (minuteState.minutes === 0) {
+          callBackTimer(secondState.seconds, minuteState.minutes, step);
           clearInterval(intervalId);
         } else {
           setminuteState({
-            minutes: minutes - 1
+            minutes: minuteState.minutes - 1
           });
 
           setSecondState({
@@ -35,22 +32,19 @@ function Timer(props) {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  });
-
-  console.log(secondState);
+  }, [minuteState, secondState, callBackTimer, step]);
 
   return (
-    <div>
-      {minuteState.minutes === 0 && secondState.seconds === 0 ? (
-        <h1>Busted!</h1>
-      ) : (
-        <h1>
-          Time Remaining: {minuteState.minutes}:
-          {secondState.seconds < 10
-            ? `0${secondState.seconds}`
-            : secondState.seconds}
-        </h1>
-      )}
+    <div
+      className='Timer'
+      style={{
+        backgroundColor: minuteState.minutes > 0 ? '#029c3d' : '#f00'
+      }}
+    >
+      Tiempo restante: {minuteState.minutes}:
+      {secondState.seconds < 10
+        ? `0${secondState.seconds}`
+        : secondState.seconds}
     </div>
   );
 }
